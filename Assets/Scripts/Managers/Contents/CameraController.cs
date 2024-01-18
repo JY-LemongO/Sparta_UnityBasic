@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {        
-        _playerController = GameManager.Instance.Player;
+        _playerController = GameManager.Player;
     }
 
     private void LateUpdate()

@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     private static GameManager s_instance;
     public static GameManager Instance { get { Init(); return s_instance; } }
 
-    private Player _player;
+    private static Player _player;
 
-    public Player Player
+    public static Player Player
     {
         get
         {
@@ -23,8 +23,22 @@ public class GameManager : MonoBehaviour
                 return _player;
         }
     }
+
+    public delegate void OnChangeAnimator(int index);
+    public static event OnChangeAnimator _onChangeAnimator;
+
+    private static int _playerAnimator;
+
     public static string    PlayerName      { get; private set; }
-    public static int       PlayerAnimator  { get; private set; }
+    public static int       PlayerAnimator
+    {
+        get { return _playerAnimator; }
+        private set
+        {
+            _playerAnimator = value;            
+            _onChangeAnimator?.Invoke(value);
+        }
+    }
 
     private void Awake()
     {
@@ -53,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void GoMainScene(string name)
     {
+        _onChangeAnimator = null;
         SetName(name);
         SceneManager.LoadScene("MainScene");
     }

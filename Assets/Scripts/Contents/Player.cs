@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum PlayerState { Idle, Move, Interact }
+public enum PlayerState { Idle, Move, Interact, UI }
 
 public class Player : MonoBehaviour
 {
@@ -29,16 +29,16 @@ public class Player : MonoBehaviour
             _rend.flipX = false;        
     }
 
-    public void Setup(string name, int animatorIndex)
-    {
-        _name           = name;
+    public void Setup(string name, int index)
+    {        
         _rend           = GetComponent<SpriteRenderer>();
         _rigid          = GetComponent<Rigidbody2D>();
         _animator       = GetComponent<Animator>();
         _inputManager   = GetComponent<InputManager>();
         _nameText       = GetComponentInChildren<TextMeshProUGUI>();
-        _nameText.text  = _name;
-        _animator.runtimeAnimatorController = _controllers[animatorIndex];
+
+        ChangeName(name);
+        ChangeAnimator(index);
 
         _inputManager._onMovePlayer -= PlayerMove;
         _inputManager._onMovePlayer += PlayerMove;
@@ -60,4 +60,17 @@ public class Player : MonoBehaviour
         Vector2 nextPos = _moveVect * _moveSpeed * Time.fixedDeltaTime;
         _rigid.MovePosition(currentPos + nextPos);
     }
+
+    public void ChangeName(string name)
+    {
+        _name = name;
+        _nameText.text = _name;
+    }
+
+    public void ChangeAnimator(int index)
+    {
+        _animator.runtimeAnimatorController = _controllers[index];        
+    }
+
+    public void ChangeState(PlayerState state) => State = state;
 }
