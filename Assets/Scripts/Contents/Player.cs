@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigid;
     private InputManager _inputManager;
 
+    public PlayerState State { get; private set; }
+
     [SerializeField] Vector2 _moveVect;
     [SerializeField] float _moveSpeed;
 
@@ -38,12 +40,14 @@ public class Player : MonoBehaviour
 
     private void PlayerMove()
     {
+        if (State != PlayerState.Move)
+            State = PlayerState.Move;
+
         _moveVect.x = Input.GetAxisRaw("Horizontal");
         _moveVect.y = Input.GetAxisRaw("Vertical");
 
         Vector2 currentPos = transform.position;
-        Vector2 nextPos = (currentPos + _moveVect) * _moveSpeed * Time.fixedDeltaTime;
-
-        _rigid.MovePosition(nextPos);
+        Vector2 nextPos = _moveVect * _moveSpeed * Time.fixedDeltaTime;
+        _rigid.MovePosition(currentPos + nextPos);
     }
 }

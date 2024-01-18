@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveVect: {x: 0, y: 0}
-  _moveSpeed: 3
+  _moveSpeed: 5
 --- !u!114 &821540136
 MonoBehaviour:
   m_ObjectHideFlags: 0
