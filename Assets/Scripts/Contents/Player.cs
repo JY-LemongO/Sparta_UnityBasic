@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum PlayerState { Idle, Move, Interact }
@@ -9,16 +10,13 @@ public class Player : MonoBehaviour
     private SpriteRenderer _rend;
     private Rigidbody2D _rigid;
     private InputManager _inputManager;
+    private TextMeshProUGUI _nameText;
 
     public PlayerState State { get; private set; }
 
     [SerializeField] Vector2 _moveVect;
     [SerializeField] float _moveSpeed;
-
-    private void Awake()
-    {
-        GameManager.Instance.PlayerSetup(this);
-    }
+    [SerializeField] string _name;    
 
     private void Update()
     {
@@ -28,11 +26,14 @@ public class Player : MonoBehaviour
             _rend.flipX = false;        
     }
 
-    public void Setup()
+    public void Setup(string name)
     {
+        _name = name;
         _rend = GetComponent<SpriteRenderer>();
         _rigid = GetComponent<Rigidbody2D>();
         _inputManager = GetComponent<InputManager>();
+        _nameText = GetComponentInChildren<TextMeshProUGUI>();
+        _nameText.text = _name;
 
         _inputManager.onMovePlayer -= PlayerMove;
         _inputManager.onMovePlayer += PlayerMove;

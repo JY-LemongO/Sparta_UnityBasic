@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     private Player _playerController;
 
     private void Start()
-    {
+    {        
         _playerController = GameManager.Instance.Player;
     }
 
