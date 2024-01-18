@@ -18,12 +18,13 @@ public class GameManager : MonoBehaviour
             if(_player == null)
             {
                 _player = FindObjectOfType<Player>();
-                _player.Setup(PlayerName);
+                _player.Setup(PlayerName, PlayerAnimator);
             }
                 return _player;
         }
     }
-    public static string PlayerName { get; private set; }
+    public static string    PlayerName      { get; private set; }
+    public static int       PlayerAnimator  { get; private set; }
 
     private void Awake()
     {
@@ -57,4 +58,5 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetName(string name) => PlayerName = name;
+    public void SetAnimator(int index) => PlayerAnimator = index;
 }

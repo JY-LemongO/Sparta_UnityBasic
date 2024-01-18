@@ -685,6 +685,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f02528e30532440a9afd4ead30da0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controllers:
+  - {fileID: 9100000, guid: 73acfd6816b33ee468b42037765af512, type: 2}
+  - {fileID: 9100000, guid: 2499358edddb54943bed393a810f672d, type: 2}
+  - {fileID: 22100000, guid: 59d519ceff4d4ff4baf15427273aae7c, type: 2}
+  - {fileID: 22100000, guid: df3801ca24fb4b74195ac07b69154424, type: 2}
   _moveVect: {x: 0, y: 0, z: 0}
   _moveSpeed: 5
   _name: 

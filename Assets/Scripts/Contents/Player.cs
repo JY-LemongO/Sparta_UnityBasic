@@ -7,6 +7,8 @@ public enum PlayerState { Idle, Move, Interact }
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] RuntimeAnimatorController[] _controllers;
+
     private SpriteRenderer   _rend;
     private Rigidbody2D      _rigid;
     private Animator         _animator;
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
             _rend.flipX = false;        
     }
 
-    public void Setup(string name)
+    public void Setup(string name, int animatorIndex)
     {
         _name           = name;
         _rend           = GetComponent<SpriteRenderer>();
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         _inputManager   = GetComponent<InputManager>();
         _nameText       = GetComponentInChildren<TextMeshProUGUI>();
         _nameText.text  = _name;
+        _animator.runtimeAnimatorController = _controllers[animatorIndex];
 
         _inputManager._onMovePlayer -= PlayerMove;
         _inputManager._onMovePlayer += PlayerMove;
@@ -50,7 +53,8 @@ public class Player : MonoBehaviour
         _moveVect.y = Input.GetAxisRaw("Vertical");
 
         float move = Mathf.Abs(_moveVect.x) + Mathf.Abs(_moveVect.y);
-        _animator.SetFloat("Speed", move);
+        if (_animator.parameterCount != 0)
+            _animator.SetFloat("Speed", move);
 
         Vector2 currentPos = transform.position;
         Vector2 nextPos = _moveVect * _moveSpeed * Time.fixedDeltaTime;

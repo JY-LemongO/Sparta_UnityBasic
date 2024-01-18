@@ -39,6 +39,7 @@ public class NameUI : MonoBehaviour
 
         _isAlerting = true;
         _noticeText.gameObject.SetActive(true);
+        _nameInput.text = "";
 
         yield return new WaitForSeconds(1);
 
