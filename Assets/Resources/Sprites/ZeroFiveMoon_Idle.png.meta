@@ -128,8 +128,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9343e51528ee95b408324c9728379d03
-      internalID: -1776415875
+      spriteID: 63fa82642ce484a42b982e3ae04e23a8
+      internalID: -1154399512
       vertices: []
       indices: 
       edges: []
@@ -147,10 +147,10 @@ TextureImporter:
       name: ZeroFiveMoon_Idle_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 64
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0da3d60257bda742a48bcbaae6e2c19
-      internalID: -1422762912
+      spriteID: 0ed7baa1fe3caef419506f585a2d77bb
+      internalID: 1917508239
       vertices: []
       indices: 
       edges: []
@@ -168,10 +168,10 @@ TextureImporter:
       name: ZeroFiveMoon_Idle_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 128
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8013bf3d9b0b70446a3e7bc09e4e8c7f
-      internalID: -922646762
+      spriteID: 2d6f24b205cc8fb4498123024485bd8d
+      internalID: 1099028650
       vertices: []
       indices: 
       edges: []
@@ -189,10 +189,10 @@ TextureImporter:
       name: ZeroFiveMoon_Idle_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 192
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abb165a5bb3b8d94eace0b429f305495
-      internalID: -577528026
+      spriteID: 71927f8267e7d0547aa058d4db27a7b4
+      internalID: 647411259
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
       name: ZeroFiveMoon_Idle_4
       rect:
         serializedVersion: 2
-        x: 136
+        x: 256
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b98d5e9d71c2854fb544d9ebfaf0dcf
-      internalID: 221711816
+      spriteID: dd3de9f51321a0a47a64b88010641df5
+      internalID: 2135394178
       vertices: []
       indices: 
       edges: []
@@ -231,10 +231,10 @@ TextureImporter:
       name: ZeroFiveMoon_Idle_5
       rect:
         serializedVersion: 2
-        x: 170
+        x: 320
         y: 0
-        width: 34
-        height: 55
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b07088769a1db44b911eda3d63308ef
-      internalID: 997872909
+      spriteID: eb3d4f40434ef134f86c137f9a8aaae3
+      internalID: -856205176
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ZeroFiveMoon_Idle_0: -1776415875
-      ZeroFiveMoon_Idle_1: -1422762912
-      ZeroFiveMoon_Idle_2: -922646762
-      ZeroFiveMoon_Idle_3: -577528026
-      ZeroFiveMoon_Idle_4: 221711816
-      ZeroFiveMoon_Idle_5: 997872909
+      ZeroFiveMoon_Idle_0: -1154399512
+      ZeroFiveMoon_Idle_1: 1917508239
+      ZeroFiveMoon_Idle_2: 1099028650
+      ZeroFiveMoon_Idle_3: 647411259
+      ZeroFiveMoon_Idle_4: 2135394178
+      ZeroFiveMoon_Idle_5: -856205176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
