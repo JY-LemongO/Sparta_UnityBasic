@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private InputManager     _inputManager;
     private TextMeshProUGUI  _nameText;
 
+    private NPC _npc = null;
+
     public PlayerState State { get; private set; }
 
     [SerializeField] Vector3 _moveVect;

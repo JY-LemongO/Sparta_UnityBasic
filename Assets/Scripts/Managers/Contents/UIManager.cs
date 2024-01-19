@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _nowTimeText;
     [SerializeField] GameObject _manualChanger;
-    [SerializeField] GameObject _nameChanger;    
+    [SerializeField] GameObject _nameChanger;        
 
     private void Update()
     {
