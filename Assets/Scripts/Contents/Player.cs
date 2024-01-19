@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(Camera.main.ScreenToViewportPoint(Input.mousePosition).x < 0.5f)
+        if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
             _rend.flipX = true;
         else
             _rend.flipX = false;        
