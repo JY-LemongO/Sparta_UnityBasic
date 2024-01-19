@@ -10,6 +10,6 @@ public class InputManager : MonoBehaviour
 
     private void FixedUpdate()
     {        
-        _onMovePlayer?.Invoke();
+        _onMovePlayer?.Invoke();        
     }
 }

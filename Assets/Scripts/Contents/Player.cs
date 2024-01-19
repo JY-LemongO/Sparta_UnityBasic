@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             _animator.SetFloat("Speed", move);
 
         Vector2 currentPos = transform.position;
-        Vector2 nextPos = _moveVect * _moveSpeed * Time.fixedDeltaTime;
+        Vector2 nextPos = _moveVect.normalized * _moveSpeed * Time.fixedDeltaTime;
         _rigid.MovePosition(currentPos + nextPos);
     }
 
