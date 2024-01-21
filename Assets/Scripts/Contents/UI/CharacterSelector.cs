@@ -13,8 +13,8 @@ public class CharacterSelector : MonoBehaviour
 
     private void Start()
     {
-        GameManager._onChangeAnimator -= ChangeRmote;
-        GameManager._onChangeAnimator += ChangeRmote;
+        GameManager.onChangeAnimator -= ChangeRmote;
+        GameManager.onChangeAnimator += ChangeRmote;
     }
 
     public void OnChangeCharacter(int direc)

@@ -14,14 +14,14 @@ public class Player : MonoBehaviour
     private Animator         _animator;
     private InputManager     _inputManager;
     private TextMeshProUGUI  _nameText;
+    private PersonCounter    _personCounter;
 
     private NPC _npc = null;
 
     public PlayerState State { get; private set; }
 
     [SerializeField] Vector3 _moveVect;
-    [SerializeField] float   _moveSpeed;
-    [SerializeField] string  _name;    
+    [SerializeField] float   _moveSpeed;    
 
     private void Update()
     {
@@ -37,7 +37,8 @@ public class Player : MonoBehaviour
         _rigid          = GetComponent<Rigidbody2D>();
         _animator       = GetComponent<Animator>();
         _inputManager   = GetComponent<InputManager>();
-        _nameText       = GetComponentInChildren<TextMeshProUGUI>();
+        _personCounter  = GetComponent<PersonCounter>();
+        _nameText       = GetComponentInChildren<TextMeshProUGUI>();        
 
         ChangeName(name);
         ChangeAnimator(index);
@@ -65,8 +66,8 @@ public class Player : MonoBehaviour
 
     public void ChangeName(string name)
     {
-        _name = name;
-        _nameText.text = _name;
+        _personCounter.Name = name;
+        _nameText.text = name;        
     }
 
     public void ChangeAnimator(int index)

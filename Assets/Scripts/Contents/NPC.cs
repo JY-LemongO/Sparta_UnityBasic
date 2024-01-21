@@ -28,8 +28,7 @@ public class NPC : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-
-        GameManager.Player.ChangeState(PlayerState.Interact);
+        
         StartCoroutine(PanelRoutine(0.2f));
     }
 
@@ -37,8 +36,7 @@ public class NPC : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-
-        GameManager.Player.ChangeState(PlayerState.Idle);
+        
         StartCoroutine(PanelRoutine(0));
         ResetScript();
     }

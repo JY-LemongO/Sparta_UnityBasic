@@ -10,23 +10,33 @@ public class NameUI : MonoBehaviour
     [SerializeField] TMP_InputField _nameInput;
     [SerializeField] Button _applyButton;
     [SerializeField] TextMeshProUGUI _noticeText;
-
+    
     private bool _isAlerting = false;
 
     private void Start()
     {
-        _nameInput.onEndEdit.AddListener(EnterName);
+        _nameInput.onEndEdit.AddListener(OnInputField);
         _applyButton.onClick.AddListener(OnApplyBtn);
     }
 
+    // 하이라이트 false 돼면 호출 X 버튼은 O
+
     private void OnApplyBtn()
     {
-        string inputValue = _nameInput.text;        
-        EnterName(inputValue);
+        string name = _nameInput.text;
+        EnterName(name, true);
     }
 
-    private void EnterName(string value)
+    private void OnInputField(string value)
     {
+        EnterName(value);
+    }
+
+    private void EnterName(string value, bool isBtn = false)
+    {        
+        if (!Input.GetKeyDown(KeyCode.Return) && !isBtn)
+            return;
+
         if (value.Length >= 2 && value.Length <= 8)
         {            
             if (SceneManager.GetActiveScene().name == "StartScene")

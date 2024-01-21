@@ -7,20 +7,38 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _nowTimeText;
+    [SerializeField] TextMeshProUGUI _participantsCountText;
+    [SerializeField] TextMeshProUGUI _participantsNameText;
 
     [SerializeField] GameObject _participantListPanel;
     [SerializeField] GameObject _mainMenuPanel;
 
     [SerializeField] GameObject _manualChanger;
-    [SerializeField] GameObject _nameChanger;
+    [SerializeField] GameObject _nameChanger;    
+    
+    private bool isPanelOpen = false;
 
-    private bool isPanelOpen = false;    
+    private void Start()
+    {
+        GameManager.Social.OnCountPeople += UpdateParticipants;        
+    }
 
     private void Update()
     {
         if (_nowTimeText != null)
             _nowTimeText.text = DateTime.Now.ToString("HH:mm");
-    }    
+    }
+
+    private void UpdateParticipants(int value, List<PersonCounter> people)
+    {
+        _participantsCountText.text = $"현재 참가자 : {value}";
+
+        string names = "";
+        foreach (PersonCounter person in people)
+            names += $"{person.Name}\n";
+
+        _participantsNameText.text = names;
+    }
 
     public void OnOffCharacterChanger()
     {

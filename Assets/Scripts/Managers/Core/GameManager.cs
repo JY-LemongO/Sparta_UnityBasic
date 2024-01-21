@@ -7,71 +7,74 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager s_instance;
-    public static GameManager Instance { get { Init(); return s_instance; } }
+    private static bool s_init = false;
+
+    private Social _social = new Social();
+    public static Social Social => Instance?._social;
 
     private static Player _player;
-
     public static Player Player
     {
         get
         {
-            if(_player == null)
+            if (_player == null)
             {
-                _player = FindObjectOfType<Player>();
-                _player.Setup(PlayerName, PlayerAnimator);
+                Player player = FindObjectOfType<Player>();
+                if (player != null)
+                    player.Setup(PlayerName, PlayerAnimator);
+
+                _player = player;
             }
-                return _player;
+            return _player;
         }
     }
 
     public delegate void OnChangeAnimator(int index);
-    public static event OnChangeAnimator _onChangeAnimator;
+    public static event OnChangeAnimator onChangeAnimator;    
 
-    private static int _playerAnimator;
+    private static int plyaerAnimatorIndex;
 
     public static string    PlayerName      { get; private set; }
     public static int       PlayerAnimator
     {
-        get { return _playerAnimator; }
+        get => plyaerAnimatorIndex;
         private set
         {
-            _playerAnimator = value;            
-            _onChangeAnimator?.Invoke(value);
+            plyaerAnimatorIndex = value;            
+            onChangeAnimator?.Invoke(value);
         }
-    }
-
-    private void Awake()
-    {
-        Init();
-
-        if(s_instance != gameObject)
-            Destroy(gameObject);        
-    }
-
-    private static void Init()
-    {
-        if(s_instance == null)
-        {
-            GameObject go = GameObject.Find("@GameManager");
-
-            if(go == null)
-            {
-                go = new GameObject("@GameManager");
-                go.AddComponent<GameManager>();
-            }
-
-            s_instance = go.GetComponent<GameManager>();
-            DontDestroyOnLoad(go);
-        }        
     }
 
     public void GoMainScene(string name)
     {
-        _onChangeAnimator = null;
+        onChangeAnimator = null;
         SetName(name);
         SceneManager.LoadScene("MainScene");
     }
 
     public void SetName(string name) => PlayerName = name;
     public void SetAnimator(int index) => PlayerAnimator = index;
+
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (s_init == false)
+            {
+                s_init = true;
+                GameObject go = GameObject.Find("@GameManager");
+                if (go == null)
+                {
+                    go = new GameObject() { name = "@GameManager" };
+                    go.AddComponent<GameManager>();
+                }
+
+                DontDestroyOnLoad(go);
+                s_instance = go.GetComponent<GameManager>();
+            }
+
+            return s_instance;
+        }
+    }
 }

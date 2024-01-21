@@ -11,7 +11,7 @@ public class ManualSelect : MonoBehaviour
             GameManager.Instance.SetAnimator(index);
         else
             GameManager.Player.ChangeAnimator(index);
-
+        
         gameObject.SetActive(false);
     }    
 }

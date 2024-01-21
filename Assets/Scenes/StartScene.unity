@@ -203,8 +203,8 @@ GameObject:
   - component: {fileID: 178123552}
   - component: {fileID: 178123551}
   - component: {fileID: 178123550}
-  - component: {fileID: 178123554}
   - component: {fileID: 178123555}
+  - component: {fileID: 178123556}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -288,8 +288,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 905833841}
-  - {fileID: 1853026538}
   - {fileID: 685438417}
+  - {fileID: 1853026538}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,21 +298,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &178123554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178123549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a4d3e7ce879aa43973e40e6c05eea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nowTimeText: {fileID: 0}
-  _manualChanger: {fileID: 1887960414}
-  _nameChanger: {fileID: 7839487481367073973}
 --- !u!114 &178123555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +316,19 @@ MonoBehaviour:
   - {fileID: 22100000, guid: ddec5d49dd610284a883d3543aded3d2, type: 2}
   - {fileID: 22100000, guid: 3331bb74727b73045a176446eb77e794, type: 2}
   _animator: {fileID: 822867730}
+--- !u!114 &178123556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178123549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f1b17cb55343e4e94b5df88105a823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manualChanger: {fileID: 1887960414}
 --- !u!1 &615536187
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,8 +770,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178123554}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 178123556}
+        m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
         m_MethodName: OnOffCharacterChanger
         m_Mode: 1
         m_Arguments:
@@ -925,6 +923,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 178123553}
     m_Modifications:
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058385706991963608, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6236241714011392904, guid: 5e98342530596ee4188c20b3a940bfe0, type: 3}
       propertyPath: m_Name
       value: ManualSelector
@@ -1229,8 +1251,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c1fda34301d4b4cbd121bcbaa0050b, type: 3}
---- !u!1 &7839487481367073973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2645918330586304846, guid: 97c1fda34301d4b4cbd121bcbaa0050b, type: 3}
-  m_PrefabInstance: {fileID: 7839487481367073972}
-  m_PrefabAsset: {fileID: 0}
