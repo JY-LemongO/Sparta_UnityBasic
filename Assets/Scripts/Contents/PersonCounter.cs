@@ -15,8 +15,13 @@ public class PersonCounter : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Name = _name;
+    }
+
+    private void OnDisable()
+    {
+        Name = "";
     }
 }

@@ -43,17 +43,31 @@ public class UIManager : MonoBehaviour
     public void OnOffCharacterChanger()
     {
         if (_manualChanger.activeSelf)
-            _manualChanger.SetActive(false);
+            UIOnOff(_manualChanger, false);
         else
-            _manualChanger.SetActive(true);
+            UIOnOff(_manualChanger, true); ;
     }
 
     public void OnOffNameChanger()
     {
         if (_nameChanger.activeSelf)
-            _nameChanger.SetActive(false);
+            UIOnOff(_nameChanger, false);
         else
-            _nameChanger.SetActive(true);
+            UIOnOff(_nameChanger, true);
+    }
+
+    private void UIOnOff(GameObject obj, bool isOn = false)
+    {
+        if (!isOn)
+        {
+            obj.SetActive(true);
+            GameManager.Player.ChangeState(PlayerState.UI);
+        }
+        else
+        {
+            obj.SetActive(false);
+            GameManager.Player.ChangeState(PlayerState.Idle);
+        }            
     }
 
     public void OnOffList()

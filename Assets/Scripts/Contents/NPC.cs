@@ -6,29 +6,22 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] GameObject         _npcInteractPanel;
+    [SerializeField] NPCTalk            _npcTalk;
+    [SerializeField] Sprite             _sprite;
     [SerializeField] TextMeshProUGUI    _scriptTMP;
-    [SerializeField] string[]           _npcScripts;
+    [SerializeField] string[]           _npcRandomScripts;
     
-    private int _scriptIndex = 0;
-
-    public void NextScript()
-    {
-        if (_scriptIndex == _npcScripts.Length - 1)
-        {
-            StartCoroutine(PanelRoutine(0));
-            ResetScript();
-            return;
-        }            
-
-        _scriptIndex++;
-        _scriptTMP.text = _npcScripts[_scriptIndex];
-    }
+    public Sprite GetNpcSprite() => _sprite;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
-        
+
+        GameManager.Player.SetCurrentNpc(this);
+        _npcTalk.AppearTalk(true);
+
+        RandomScript();
         StartCoroutine(PanelRoutine(0.2f));
     }
 
@@ -36,15 +29,17 @@ public class NPC : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-        
-        StartCoroutine(PanelRoutine(0));
-        ResetScript();
-    }
 
-    private void ResetScript()
-    {
-        _scriptIndex = 0;
-        _scriptTMP.text = _npcScripts[_scriptIndex];
+        _npcTalk.AppearTalk(false);
+
+        GameManager.Player.SetCurrentNpc(null);
+        StartCoroutine(PanelRoutine(0));        
+    }    
+
+    private void RandomScript()
+    {        
+        int random = Random.Range(0, _npcRandomScripts.Length);
+        _scriptTMP.text = _npcRandomScripts[random];
     }
 
     private IEnumerator PanelRoutine(float end)

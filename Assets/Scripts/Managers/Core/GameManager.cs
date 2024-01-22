@@ -53,8 +53,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetName(string name) => PlayerName = name;
-    public void SetAnimator(int index) => PlayerAnimator = index;
-
+    public void SetAnimator(int index) => PlayerAnimator = index;    
 
     public static GameManager Instance
     {

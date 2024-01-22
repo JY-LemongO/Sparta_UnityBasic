@@ -24,8 +24,17 @@ public class Social
     {
         if (_peopleList.Any(x => x == pc))
         {
-            OnCountPeople?.Invoke(ParticipantsCount, _peopleList);
-            return;
+            if(pc.Name == "")
+            {
+                _peopleList.Remove(pc);
+                ParticipantsCount--;
+                return;
+            }
+            else
+            {
+                OnCountPeople?.Invoke(ParticipantsCount, _peopleList);
+                return;
+            }            
         }
         _peopleList.Add(pc);
         ParticipantsCount++;

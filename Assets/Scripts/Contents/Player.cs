@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum PlayerState { Idle, Move, Interact, UI }
+public enum PlayerState { Idle, Move, Talk, UI }
 
 public class Player : MonoBehaviour
 {
     [SerializeField] RuntimeAnimatorController[] _controllers;
+    [SerializeField] Sprite[] _sprites;
 
     private SpriteRenderer   _rend;
     private Rigidbody2D      _rigid;
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour
     private TextMeshProUGUI  _nameText;
     private PersonCounter    _personCounter;
 
-    private NPC _npc = null;
+    public Sprite P_Sprite { get; private set; }
+    public NPC Npc { get; private set; }
 
     public PlayerState State { get; private set; }
 
@@ -31,6 +33,11 @@ public class Player : MonoBehaviour
             _rend.flipX = false;        
     }
 
+    public void SetCurrentNpc(NPC npc)
+    {
+        Npc = npc;
+    }
+
     public void Setup(string name, int index)
     {        
         _rend           = GetComponent<SpriteRenderer>();
@@ -41,14 +48,16 @@ public class Player : MonoBehaviour
         _nameText       = GetComponentInChildren<TextMeshProUGUI>();        
 
         ChangeName(name);
-        ChangeAnimator(index);
-
-        _inputManager._onMovePlayer -= PlayerMove;
-        _inputManager._onMovePlayer += PlayerMove;
+        ChangeAnimator(index);        
+        
+        _inputManager._onMovePlayer += PlayerMove;        
     }
 
     private void PlayerMove()
     {
+        if (State == PlayerState.Talk || State == PlayerState.UI)
+            return;
+
         if (State != PlayerState.Move)
             State = PlayerState.Move;
 
@@ -62,7 +71,7 @@ public class Player : MonoBehaviour
         Vector2 currentPos = transform.position;
         Vector2 nextPos = _moveVect.normalized * _moveSpeed * Time.fixedDeltaTime;
         _rigid.MovePosition(currentPos + nextPos);
-    }
+    }    
 
     public void ChangeName(string name)
     {
@@ -72,7 +81,8 @@ public class Player : MonoBehaviour
 
     public void ChangeAnimator(int index)
     {
-        _animator.runtimeAnimatorController = _controllers[index];        
+        _animator.runtimeAnimatorController = _controllers[index];
+        P_Sprite = _sprites[index];
     }
 
     public void ChangeState(PlayerState state) => State = state;
