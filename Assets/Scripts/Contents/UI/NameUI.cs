@@ -37,7 +37,7 @@ public class NameUI : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Return) && !isBtn)
             return;
 
-        if (value.Length >= 2 && value.Length <= 8)
+        if (value.Length >= 2 && value.Length <= 10)
         {            
             if (SceneManager.GetActiveScene().name == "StartScene")
                 GameManager.Instance.GoMainScene(value);
