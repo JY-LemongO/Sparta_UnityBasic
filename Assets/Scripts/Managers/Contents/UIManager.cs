@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     
     private bool isPanelOpen = false;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Social.OnCountPeople += UpdateParticipants;        
     }
