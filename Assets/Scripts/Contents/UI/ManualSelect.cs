@@ -10,7 +10,11 @@ public class ManualSelect : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "StartScene")
             GameManager.Instance.SetAnimator(index);
         else
+        {            
+            UIManager.IsChangerOpen = false;
+            GameManager.Player.ChangeState(PlayerState.Idle);
             GameManager.Player.ChangeAnimator(index);
+        }            
         
         gameObject.SetActive(false);
     }    

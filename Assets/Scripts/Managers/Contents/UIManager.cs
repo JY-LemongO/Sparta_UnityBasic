@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     
     private bool isPanelOpen = false;
 
+    public static bool IsChangerOpen = false;
+
     private void Awake()
     {
         GameManager.Social.OnCountPeople += UpdateParticipants;        
@@ -58,16 +60,16 @@ public class UIManager : MonoBehaviour
 
     private void UIOnOff(GameObject obj, bool isOn = false)
     {
+        if (IsChangerOpen && isOn == true)
+            return;
+
+        obj.SetActive(isOn);
+        IsChangerOpen = isOn;
+
         if (!isOn)
-        {
-            obj.SetActive(true);
-            GameManager.Player.ChangeState(PlayerState.UI);
-        }
-        else
-        {
-            obj.SetActive(false);
             GameManager.Player.ChangeState(PlayerState.Idle);
-        }            
+        else
+            GameManager.Player.ChangeState(PlayerState.UI);
     }
 
     public void OnOffList()

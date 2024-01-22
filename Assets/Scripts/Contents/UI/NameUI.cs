@@ -43,6 +43,8 @@ public class NameUI : MonoBehaviour
                 GameManager.Instance.GoMainScene(value);
             else
             {
+                UIManager.IsChangerOpen = false;
+                GameManager.Player.ChangeState(PlayerState.Idle);
                 GameManager.Player.ChangeName(value);
                 _nameInput.text = "";
                 gameObject.SetActive(false);
