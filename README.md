@@ -64,7 +64,7 @@ private void Start()
 
 <details>
 <summary>캐릭터 (애니메이션) 설정</summary>
-<div markdown="1">
+<div markdown="2">
 
 - ManualSelector UI Prefab 을 통해 변경
   
@@ -95,3 +95,21 @@ private void Start()
 
 </div>
 </details>
+
+
+<details>
+<summary>캐릭터 이동</summary>
+<div markdown="3">
+
+- Player , InputManager Script 이용
+
+  ![Player](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/45a0764b-19a5-483f-a8d8-d631747438ca)
+- Player.PlayerMove() 에서 전반적인 움직임 로직 담당
+- Setupe 시 InputManager의 _onMovePlayer event에 구독
+- InputManager 에서 FixedUpdate로 _onMovePlayer 호출
+- [현재 리포지 InputManager.cs 링크](https://github.com/JY-LemongO/Sparta_UnityBasic/blob/main/Assets/Scripts/Contents/InputManager.cs)
+- [현재 리포지 Player.cs 링크](https://github.com/JY-LemongO/Sparta_UnityBasic/blob/main/Assets/Scripts/Contents/Player.cs)
+
+</div>
+</details>
+
