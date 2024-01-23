@@ -6,6 +6,8 @@ Zep을 모방한 스파르타 타운 만들기
 
 ### 기능 설명
 
+#### StartScene
+
 <details>
 <summary>캐릭터 이름 설정</summary>
 <div markdown="1">
@@ -55,6 +57,41 @@ private void Start()
   
   *5. Player.Setup 에서 string _name 에 할당 및 Player 하위의 TMP _nameText.text 에 할당하여 이름 출력*
   
+
+</div>
+</details>
+
+
+<details>
+<summary>캐릭터 (애니메이션) 설정</summary>
+<div markdown="1">
+
+- ManualSelector UI Prefab 을 통해 변경
+  
+  ![CharacterChanger](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/67395e1c-e6b5-4f21-a5b8-30af323d28a9)
+  - Prefab 구성
+    - 각 캐릭터를 선택할 수 있는 EventTrigger    
+    - ManualSelect Script
+  - ManualSelect Script
+    - EventTrigger의 이벤트로 할당할 함수 OnManualChangeCharacter(int index)
+<pre><code>public void OnManualChangeCharacter(int index)
+{
+    if (SceneManager.GetActiveScene().name == "StartScene")
+        GameManager.Instance.SetAnimator(index);
+    else
+    {            
+        UIManager.IsChangerOpen = false;
+        GameManager.Player.ChangeState(PlayerState.Idle);
+        GameManager.Player.ChangeAnimator(index);
+    }            
+    
+    gameObject.SetActive(false);
+}
+</code></pre>
+
+ - StartScene 에선 Player가 가지고있는 Animator 배열의 인덱스 정보만 할당
+   - 이름변경과 마찬가지로 MainScene 전환 시 Player.Setup으로 Animator 변경
+ - MainScene 에선 직접적인 Player의 Animator 변경 호출
 
 </div>
 </details>
