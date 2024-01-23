@@ -97,6 +97,8 @@ private void Start()
 </details>
 
 
+#### MainScene
+
 <details>
 <summary>캐릭터 이동</summary>
 <div markdown="3">
@@ -109,6 +111,61 @@ private void Start()
 - InputManager 에서 FixedUpdate로 _onMovePlayer 호출
 - [현재 리포지 InputManager.cs 링크](https://github.com/JY-LemongO/Sparta_UnityBasic/blob/main/Assets/Scripts/Contents/InputManager.cs)
 - [현재 리포지 Player.cs 링크](https://github.com/JY-LemongO/Sparta_UnityBasic/blob/main/Assets/Scripts/Contents/Player.cs)
+
+</div>
+</details>
+
+
+<details>
+<summary>방 만들기</summary>
+<div markdown="4">
+
+- TilePalette 활용하여 방 만듦
+
+  ![tile](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/126f5ba8-bf14-4008-9884-371bcdef4cfb)
+- Collision, Props, TileMap 세가지 그리드로 구분.
+  - Collision : 충돌구역
+  - Props : 책상 등 잡동사니
+  - TileMap : 바닥 및 벽
+
+  ![map](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/aec20286-1da2-4f26-a446-bbf3e2f055c6)
+
+</div>
+</details>
+
+
+<details>
+<summary>카메라 따라가기</summary>
+<div markdown="5">
+
+- CameraController Script를 MainCamera에 부착시켜 따라갈 수 있도록 하였음
+<pre><code>private Transform _playerTransform;
+[SerializeField] Vector2 _borderLeftDown;
+[SerializeField] Vector2 _borderRightUp;
+[SerializeField] float _cameraSpeed;
+private void Start()
+{
+    _playerTransform = GameManager.Player.transform;
+}
+
+private void FixedUpdate()
+{        
+    transform.position = Vector3.Lerp(transform.position, _playerTransform.position + Vector3.forward * -10, Time.deltaTime * _cameraSpeed);
+
+    float limitX = Mathf.Clamp(transform.position.x, _borderLeftDown.x, _borderRightUp.x);
+    float limitY = Mathf.Clamp(transform.position.y, _borderLeftDown.y, _borderRightUp.y);
+
+    transform.position = new Vector3(limitX, limitY, -10);
+}
+</code></pre>
+
+- Player의 Trasnform을 전역변수르 두고 Start 에서 GameManager 의 Player.Transform을 _playerTransform에 할당
+  - 매번 GameManager 에서 호출하는 것 보단 전역으로 두는것이 좋다고 생각. 가독성에도 좋아보였음
+- Vector3.Lerp 를 사용하여 플레이어 위치를 부드럽게 따라가도록 하였음
+- _borderLeftDown, _borderRightUp Vector2 변수로 플레이어가 지정된 위치 밖일 때 카메라는 따라가지 못하도록 함
+
+![gif용](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/2052bb1c-4493-43d7-9e77-e9aa3742c97a)
+![gif용 (1)](https://github.com/JY-LemongO/Sparta_UnityBasic/assets/122505119/105a481d-3742-46f6-9267-9ec0c81e32e2)
 
 </div>
 </details>
